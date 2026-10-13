@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1st Birthday • My Dear Nephew</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e8a0bf;
+            --primary-dark: #d4849a;
+            --secondary: #a8d5e5;
+            --accent: #f7d794;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --white: #ffffff;
+            --bg: #fdf6f0;
+            --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle floating shapes */
+        .bg-shape {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bg-shape-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; left: -100px; }
+        .bg-shape-2 { width: 350px; height: 350px; background: var(--secondary); bottom: -80px; right: -80px; }
+        .bg-shape-3 { width: 250px; height: 250px; background: var(--accent); top: 40%; left: 60%; }
+
+        /* Header / Hero */
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(232, 160, 191, 0.25);
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 3.8rem);
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-dark);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            font-weight: 400;
+            max-width: 520px;
+            margin: 0 auto 40px;
+        }
+
+        /* Main Photo */
+        .main-photo-wrapper {
+            position: relative;
+            max-width: 380px;
+            margin: 0 auto 50px;
+        }
+
+        .main-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid var(--white);
+            box-shadow: var(--card-shadow);
+            display: block;
+        }
+
+        .photo-ring {
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            border: 3px dashed var(--primary);
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .age-circle {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(232, 160, 191, 0.45);
+            border: 4px solid white;
+        }
+
+        /* Content Card */
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 28px;
+            padding: 48px 40px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 28px;
+            color: var(--text);
+        }
+
+        .message-text {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .message-text strong {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 28px auto;
+            border-radius: 2px;
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 10px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Wishes Grid */
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .wish-card {
+            background: linear-gradient(145deg, #fff9f5, #f8f4ff);
+            border-radius: 16px;
+            padding: 22px 18px;
+            text-align: center;
+            border: 1px solid rgba(232, 160, 191, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .wish-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 28px rgba(232, 160, 191, 0.18);
+        }
+
+        .wish-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .wish-card p {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .footer strong {
+            color: var(--primary-dark);
+        }
+
+        /* Decorative cake image */
+        .cake-banner {
+            text-align: center;
+            margin: 10px 0 30px;
+        }
+
+        .cake-banner img {
+            max-width: 120px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .card {
+                padding: 32px 22px;
+            }
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+            .gallery-item:last-child {
+                grid-column: 1 / -1;
+                max-width: 70%;
+                margin: 0 auto;
+            }
+            .main-photo-wrapper {
+                max-width: 280px;
+            }
+            .age-circle {
+                width: 64px;
+                height: 64px;
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            .gallery-item:last-child {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Soft background shapes -->
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+    <div class="bg-shape bg-shape-3"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span>✨</span> First Birthday Celebration
+        </div>
+        
+        <h1>Happy <span>1st</span> Birthday</h1>
+        <p class="hero-subtitle">Wishing my dearest nephew a wonderful first birthday filled with love and joy</p>
+
+        <!-- Main Circular Photo -->
+        <div class="main-photo-wrapper">
+            <div class="photo-ring"></div>
+            <img 
+                src="./src/main.png" 
+                alt="Cute Baby" 
+                class="main-photo"
+                onerror="this.src='https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&q=80'"
+            >
+            <div class="age-circle">1</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <!-- Message Card -->
+        <div class="card">
+            <h2 class="section-title">A Little Note of Love</h2>
+            <div class="divider"></div>
+            
+            <div class="cake-banner">
+                <img src="https://cdn-icons-png.flaticon.com/512/3176/3176292.png" alt="Birthday Cake" width="120">
+            </div>
+
+            <p class="message-text">
+                Today my little prince turns <strong>one year old</strong>.<br><br>
+                May you always be blessed with good health, happiness, and endless love.<br>
+                You are the light of our home, our biggest smile, and our greatest blessing.<br><br>
+                <strong>Happy Birthday, my little prince!</strong> 💖
+            </p>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="card">
+            <h2 class="section-title">Precious Moments</h2>
+            <div class="divider"></div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="./src/1.png" alt="Baby smile" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="./src/2.png" alt="Cute baby" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="./src/3.png" alt="Baby playing" loading="lazy">
+                </div>
+            </div>
+            <!-- <p style="text-align:center; margin-top:22px; font-size:0.9rem; color:var(--text-light);">
+                (You can replace these with your own photos by changing the image links)
+            </p> -->
+        </div>
+
+        <!-- Wishes -->
+        <div class="card">
+            <h2 class="section-title">Our Wishes for You</h2>
+            <div class="divider"></div>
+            
+            <div class="wishes-grid">
+                <div class="wish-card">
+                    <span class="wish-icon">🌟</span>
+                    <p>Stay healthy always</p>
+                </div>
+                <div class="wish-card">
+                    <span class="wish-icon">😊</span>
+                    <p>Keep smiling forever</p>
+                </div>
+                <div class="wish-card">
+                    <span class="wish-icon">🚀</span>
+                    <p>Grow up to be successful</p>
+                </div>
+                <div class="wish-card">
+                    <span class="wish-icon">🧸</span>
+                    <p>Live a life full of love</p>
+                </div>
+                <div class="wish-card">
+                    <span class="wish-icon">🌈</span>
+                    <p>See all the colors of life</p>
+                </div>
+                <div class="wish-card">
+                    <span class="wish-icon">🕊️</span>
+                    <p>Always be protected & safe</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>With endless love from your <strong>Uncle</strong></p>
+            <p style="margin-top:6px; font-size:0.85rem;">Made with ❤️ for the sweetest 1-year-old</p>
+        </div>
+    </div>
+</body>
+</html>
